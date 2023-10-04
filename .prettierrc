@@ -1,14 +1,15 @@
 {
-  "singleQuote": true,
-  "bracketSpacing": false,
-  "jsxBracketSameLine": false,
-  "useTabs": true,
-  "overrides": [
-    {
-      "files": ["*.yml"],
-      "options": {
-        "singleQuote": false
-      }
-    }
-  ]
+    "singleQuote": false,
+    "jsxBracketSameLine": false,
+    "useTabs": false,
+    "tabWidth": 4,
+    "printWidth": 160,
+    "overrides": [
+        {
+            "files": ["*.yml"],
+            "options": {
+                "singleQuote": false
+            }
+        }
+    ]
 }
