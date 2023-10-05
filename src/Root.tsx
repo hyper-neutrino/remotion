@@ -46,7 +46,26 @@ export const RemotionRoot: React.FC = () => {
                     notificationColorFill: "#ee88ee",
                 }}
             />
-            <Composition id="Outro" component={Outro} durationInFrames={600} fps={60} width={2560} height={1440} schema={outroSchema} defaultProps={{}} />
+            <Composition
+                id="Outro"
+                component={Outro}
+                durationInFrames={600}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={outroSchema}
+                defaultProps={{
+                    backgroundColor: "#2b2d31",
+                    paneColor: "#303136",
+                    title: "Thanks for watching!",
+                    titleColor: "#eeeeee",
+                    titleUnderlineColor: "#009688",
+                    subscribeBackgroundColor: "#eeeeee",
+                    subscribeColor: "#303136",
+                    subscribeBackgroundColorFill: "#bb4444",
+                    subscribeColorFill: "#ffffff",
+                }}
+            />
         </>
     );
 };

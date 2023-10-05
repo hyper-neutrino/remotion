@@ -1,7 +1,10 @@
+import { loadFont } from "@remotion/google-fonts/ShareTech";
 import { zColor } from "@remotion/zod-types";
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
+
+const { fontFamily } = loadFont();
 
 export const schema = z.object({
     text: z.string(),
@@ -18,11 +21,10 @@ export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color,
 
     return (
         <>
-            <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet" />
             <AbsoluteFill
                 style={{
                     fontSize: config.height * 0.16,
-                    fontFamily: "Share Tech",
+                    fontFamily,
                     fontWeight: "bold",
                     color,
                     top: config.height * 0.42,
@@ -42,8 +44,8 @@ export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color,
             <AbsoluteFill
                 style={{
                     fontSize: config.height * 0.08,
-                    fontFamily: "Share Tech",
                     color: subtitleColor,
+                    fontFamily,
                     top: config.height * 0.53,
                     left: config.width * 0.3,
                     opacity: interpolate(frame, [60, 90], [0, 1]),

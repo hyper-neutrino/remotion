@@ -1,7 +1,10 @@
+import { loadFont } from "@remotion/google-fonts/ShareTech";
 import { zColor } from "@remotion/zod-types";
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
+
+const { fontFamily } = loadFont();
 
 export const schema = z.object({
     subscribeBackgroundColor: zColor(),
@@ -16,11 +19,10 @@ export const Subscribe: React.FC<z.infer<typeof schema>> = ({ subscribeBackgroun
 
     return (
         <>
-            <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet" />
             <div
                 style={{
                     fontSize: config.width * 0.02,
-                    fontFamily: "Share Tech",
+                    fontFamily,
                     scale: `${
                         frame < 110 || frame > 150
                             ? 1
