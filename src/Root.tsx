@@ -1,6 +1,7 @@
 import { Composition } from "remotion";
 import { CTA, schema as ctaSchema } from "./CTA";
 import { Intro, schema as introSchema } from "./Intro";
+import { JoinDiscord, schema as joinDiscordSchema } from "./JoinDiscord";
 import { Outro, schema as outroSchema } from "./Outro";
 
 // Each <Composition> is an entry in the sidebar!
@@ -64,6 +65,18 @@ export const RemotionRoot: React.FC = () => {
                     subscribeColor: "#303136",
                     subscribeBackgroundColorFill: "#bb4444",
                     subscribeColorFill: "#ffffff",
+                }}
+            />
+            <Composition
+                id="JoinDiscord"
+                component={JoinDiscord}
+                durationInFrames={240}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={joinDiscordSchema}
+                defaultProps={{
+                    backgroundColor: "#303136",
                 }}
             />
         </>
