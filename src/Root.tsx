@@ -1,5 +1,7 @@
 import { Composition } from "remotion";
 import { CTA, schema as ctaSchema } from "./CTA";
+import { FadeFrom, schema as fadeFromSchema } from "./FadeFrom";
+import { FadeTo, schema as fadeToSchema } from "./FadeTo";
 import { Intro, schema as introSchema } from "./Intro";
 import { JoinDiscord, schema as joinDiscordSchema } from "./JoinDiscord";
 import { Outro, schema as outroSchema } from "./Outro";
@@ -70,7 +72,7 @@ export const RemotionRoot: React.FC = () => {
             <Composition
                 id="JoinDiscord"
                 component={JoinDiscord}
-                durationInFrames={240}
+                durationInFrames={300}
                 fps={60}
                 width={2560}
                 height={1440}
@@ -78,6 +80,26 @@ export const RemotionRoot: React.FC = () => {
                 defaultProps={{
                     backgroundColor: "#303136",
                 }}
+            />
+            <Composition
+                id="FadeTo"
+                component={FadeTo}
+                durationInFrames={90}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={fadeToSchema}
+                defaultProps={{ backgroundColor: "#2b2d31" }}
+            />
+            <Composition
+                id="FadeFrom"
+                component={FadeFrom}
+                durationInFrames={90}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={fadeFromSchema}
+                defaultProps={{ backgroundColor: "#2b2d31" }}
             />
         </>
     );
