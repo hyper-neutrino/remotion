@@ -1,6 +1,6 @@
 import { zColor } from "@remotion/zod-types";
 import React from "react";
-import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
 
 export const schema = z.object({
@@ -13,7 +13,7 @@ export const Icon: React.FC<z.infer<typeof schema>> = ({ primaryColor, secondary
     const config = useVideoConfig();
 
     const inter = (x: number, y: number, start: number, end: number) =>
-        interpolate(frame, [x, y], [start, end], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+        interpolate(frame, [x, y], [start, end], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.64, 0.32, 0.32, 0.64) });
 
     return (
         <svg

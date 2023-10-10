@@ -1,10 +1,14 @@
 import { Composition } from "remotion";
+import { Alert, schema as alertSchema } from "./Alert";
+import { TitleAndDescriptionAlert } from "./alerts/TitleAndDescriptionAlert";
 import { CTA, schema as ctaSchema } from "./CTA";
 import { FadeFrom, schema as fadeFromSchema } from "./FadeFrom";
 import { FadeTo, schema as fadeToSchema } from "./FadeTo";
+import { Intermission, schema as intermissionSchema } from "./Intermission";
 import { Intro, schema as introSchema } from "./Intro";
 import { JoinDiscord, schema as joinDiscordSchema } from "./JoinDiscord";
 import { Outro, schema as outroSchema } from "./Outro";
+import { SectionHeader } from "./intermissions/SectionHeader";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -100,6 +104,43 @@ export const RemotionRoot: React.FC = () => {
                 height={1440}
                 schema={fadeFromSchema}
                 defaultProps={{ backgroundColor: "#2b2d31" }}
+            />
+            <Composition
+                id="Intermission"
+                component={Intermission}
+                durationInFrames={360}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={intermissionSchema}
+                defaultProps={{
+                    backgroundColor: "#2b2d31",
+                    intermissionDuration: 240,
+                    children: <SectionHeader duration={240} title="Section Title" subtitle="Section Subtitle" titleColor="#eeeeee" subtitleColor="#aaaaaa" />,
+                }}
+            />
+            <Composition
+                id="Alert"
+                component={Alert}
+                durationInFrames={240}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={alertSchema}
+                defaultProps={{
+                    backgroundColor: "#303136",
+                    duration: 240,
+                    showProgress: true,
+                    progressColor: "#009688",
+                    children: (
+                        <TitleAndDescriptionAlert
+                            title="Title"
+                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam molestie nisi nunc, id laoreet est pulvinar sit amet."
+                            titleColor="#eeeeee"
+                            descriptionColor="#cccccc"
+                        />
+                    ),
+                }}
             />
         </>
     );
