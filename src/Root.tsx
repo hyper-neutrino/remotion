@@ -5,10 +5,11 @@ import { CTA, schema as ctaSchema } from "./CTA";
 import { FadeFrom, schema as fadeFromSchema } from "./FadeFrom";
 import { FadeTo, schema as fadeToSchema } from "./FadeTo";
 import { Intermission, schema as intermissionSchema } from "./Intermission";
+import { SectionHeader } from "./intermissions/SectionHeader";
 import { Intro, schema as introSchema } from "./Intro";
 import { JoinDiscord, schema as joinDiscordSchema } from "./JoinDiscord";
 import { Outro, schema as outroSchema } from "./Outro";
-import { SectionHeader } from "./intermissions/SectionHeader";
+import { SceneTransition, schema as sceneTransitionSchema } from "./SceneTransition";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -140,6 +141,20 @@ export const RemotionRoot: React.FC = () => {
                             descriptionColor="#cccccc"
                         />
                     ),
+                }}
+            />
+            <Composition
+                id="SceneTransition"
+                component={SceneTransition}
+                durationInFrames={240}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={sceneTransitionSchema}
+                defaultProps={{
+                    duration: 240,
+                    backgroundColor: "#2b2d31",
+                    color: "#ff0099",
                 }}
             />
         </>
