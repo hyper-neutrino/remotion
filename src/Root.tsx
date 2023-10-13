@@ -1,4 +1,6 @@
-import { Composition } from "remotion";
+import { zColor } from "@remotion/zod-types";
+import { Composition, Sequence } from "remotion";
+import { z } from "zod";
 import { Alert, schema as alertSchema } from "./Alert";
 import { TitleAndDescriptionAlert } from "./alerts/TitleAndDescriptionAlert";
 import { CTA, schema as ctaSchema } from "./CTA";
@@ -19,7 +21,7 @@ export const RemotionRoot: React.FC = () => {
             <Composition
                 id="Intro"
                 component={Intro}
-                durationInFrames={270}
+                durationInFrames={330}
                 fps={60}
                 width={2560}
                 height={1440}
@@ -94,7 +96,7 @@ export const RemotionRoot: React.FC = () => {
                 width={2560}
                 height={1440}
                 schema={fadeToSchema}
-                defaultProps={{ backgroundColor: "#2b2d31" }}
+                defaultProps={{ duration: 90, backgroundColor: "#2b2d31" }}
             />
             <Composition
                 id="FadeFrom"
@@ -104,7 +106,29 @@ export const RemotionRoot: React.FC = () => {
                 width={2560}
                 height={1440}
                 schema={fadeFromSchema}
-                defaultProps={{ backgroundColor: "#2b2d31" }}
+                defaultProps={{ duration: 90, backgroundColor: "#2b2d31" }}
+            />
+            <Composition
+                id="FadeInOut"
+                component={(props: { duration: number; backgroundColor: string }) => (
+                    <>
+                        <Sequence durationInFrames={60}>
+                            <FadeTo {...props} />
+                        </Sequence>
+                        <Sequence from={60}>
+                            <FadeFrom {...props} />
+                        </Sequence>
+                    </>
+                )}
+                durationInFrames={120}
+                fps={60}
+                width={2560}
+                height={1440}
+                schema={z.object({
+                    duration: z.number(),
+                    backgroundColor: zColor(),
+                })}
+                defaultProps={{ duration: 60, backgroundColor: "#2b2d31" }}
             />
             <Composition
                 id="Intermission"
@@ -146,13 +170,13 @@ export const RemotionRoot: React.FC = () => {
             <Composition
                 id="SceneTransition"
                 component={SceneTransition}
-                durationInFrames={240}
+                durationInFrames={120}
                 fps={60}
                 width={2560}
                 height={1440}
                 schema={sceneTransitionSchema}
                 defaultProps={{
-                    duration: 240,
+                    duration: 120,
                     backgroundColor: "#2b2d31",
                     color: "#ff0099",
                 }}

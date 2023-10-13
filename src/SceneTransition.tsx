@@ -1,6 +1,6 @@
 import { zColor } from "@remotion/zod-types";
 import React from "react";
-import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Easing, interpolate, interpolateColors, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
 
 export const schema = z.object({
@@ -17,21 +17,22 @@ export const SceneTransition: React.FC<z.infer<typeof schema>> = ({ duration, ba
     const right = config.width / 2 + config.height * 0.36;
 
     const translate =
-        frame < duration / 4
-            ? interpolate(frame, [0, duration / 4], [100, 0], { easing: Easing.bezier(0.6, 0, 0.6, 1) })
-            : frame > (duration * 3) / 4
-            ? interpolate(frame, [(duration * 3) / 4, duration], [0, 100], { easing: Easing.bezier(0.3, 0, 0.4, 0.8) })
+        frame < duration / 5
+            ? interpolate(frame, [0, duration / 5], [100, 0], { easing: Easing.bezier(0.6, 0, 0.6, 1) })
+            : frame > (duration * 4) / 5
+            ? interpolate(frame, [(duration * 4) / 5, duration], [0, 100], { easing: Easing.bezier(0.3, 0, 0.4, 0.8) })
             : 0;
 
     return (
-        <>
+        <AbsoluteFill style={{ opacity: 1 - translate / 100 }}>
             <AbsoluteFill
                 style={{
-                    backgroundColor: color,
-                    opacity:
-                        frame < duration / 4 || frame > (duration * 3) / 4
-                            ? 0
-                            : interpolate((((frame - duration / 4) * 2) / duration) * 21, [0, 1, 4, 5, 6, 7, 8, 20, 21], [0, 0.4, 0.4, 0, 0.6, 0, 1, 1, 0]),
+                    backgroundColor: interpolateColors(
+                        frame,
+                        [duration / 5, (duration * 3) / 7 - duration / 20, (duration * 3) / 7 + duration / 20, (duration * 4) / 5],
+                        ["#009688", "#009688", "#ff0099", "#ff0099"]
+                    ),
+                    opacity: frame < duration / 5 || frame > (duration * 4) / 5 ? 0 : 1,
                 }}
             />
             <AbsoluteFill
@@ -51,6 +52,6 @@ export const SceneTransition: React.FC<z.infer<typeof schema>> = ({ duration, ba
                     translate: `0 ${translate}%`,
                 }}
             />
-        </>
+        </AbsoluteFill>
     );
 };

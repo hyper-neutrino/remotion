@@ -14,13 +14,13 @@ export const Intermission: React.FC<React.PropsWithChildren<z.infer<typeof schem
     return (
         <>
             <Sequence durationInFrames={60}>
-                <FadeTo {...{ backgroundColor }} />
+                <FadeTo duration={90} {...{ backgroundColor }} />
             </Sequence>
             <Sequence from={60} durationInFrames={intermissionDuration}>
                 <AbsoluteFill style={{ backgroundColor }}>{children}</AbsoluteFill>
             </Sequence>
             <Sequence from={intermissionDuration + 60}>
-                <FadeFrom {...{ backgroundColor }} />
+                <FadeFrom duration={90} {...{ backgroundColor }} />
             </Sequence>
         </>
     );

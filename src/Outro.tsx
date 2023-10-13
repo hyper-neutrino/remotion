@@ -40,7 +40,7 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
     return (
         <>
             <Sequence durationInFrames={60}>
-                <FadeTo {...{ backgroundColor }} />
+                <FadeTo duration={90} {...{ backgroundColor }} />
             </Sequence>
             <Sequence from={60}>
                 <AbsoluteFill style={{ backgroundColor }}>
