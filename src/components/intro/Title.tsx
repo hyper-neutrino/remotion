@@ -18,7 +18,7 @@ export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color,
     subtitleColor ??= "#888888";
 
     const frame = useCurrentFrame();
-    const config = useVideoConfig();
+    const { width: w, height: h } = useVideoConfig();
 
     const x = interpolate(frame, [150, 180], [0, 101]);
 
@@ -26,12 +26,12 @@ export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color,
         <>
             <AbsoluteFill
                 style={{
-                    fontSize: config.height * 0.16,
+                    fontSize: h * 0.16,
                     fontFamily,
                     fontWeight: "bold",
                     color,
-                    top: config.height * 0.42,
-                    left: config.width * 0.3,
+                    top: h * 0.42,
+                    left: w * 0.3,
                     opacity: interpolate(frame, [0, 30], [0, 1]),
                     clipPath: `polygon(${x * 2}% 0%, ${x * 2}% 100%, 100% 100%, 100% 0%)`,
                     scale: `${interpolate(frame, [60, 90], [1, 0.5], {
@@ -46,11 +46,11 @@ export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color,
             </AbsoluteFill>
             <AbsoluteFill
                 style={{
-                    fontSize: config.height * 0.08,
+                    fontSize: h * 0.08,
                     color: subtitleColor,
                     fontFamily,
-                    top: config.height * 0.53,
-                    left: config.width * 0.3,
+                    top: h * 0.53,
+                    left: w * 0.3,
                     opacity: interpolate(frame, [60, 90], [0, 1]),
                     clipPath: `polygon(${x}% 0%, ${x}% 100%, 100% 100%, 100% 0%)`,
                 }}

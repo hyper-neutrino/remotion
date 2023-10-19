@@ -19,7 +19,7 @@ export const SectionHeader: React.FC<z.infer<typeof schema>> = ({ duration, titl
     titleColor ??= "#eeeeee";
     subtitleColor ??= "#aaaaaa";
 
-    const config = useVideoConfig();
+    const { height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
@@ -38,9 +38,9 @@ export const SectionHeader: React.FC<z.infer<typeof schema>> = ({ duration, titl
                 }`,
             }}
         >
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: config.height * 0.02 }}>
-                <div style={{ color: titleColor, fontSize: config.height * 0.16, fontFamily }}>{title}</div>
-                {subtitle ? <div style={{ color: subtitleColor ?? titleColor, fontSize: config.height * 0.08, fontFamily }}>{subtitle}</div> : null}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: h * 0.02 }}>
+                <div style={{ color: titleColor, fontSize: h * 0.16, fontFamily }}>{title}</div>
+                {subtitle ? <div style={{ color: subtitleColor ?? titleColor, fontSize: h * 0.08, fontFamily }}>{subtitle}</div> : null}
             </div>
         </AbsoluteFill>
     );

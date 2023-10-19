@@ -14,11 +14,11 @@ export const SceneTransition: React.FC<z.infer<typeof schema>> = ({ duration, ba
     backgroundColor ??= "#2b2d31";
     color ??= "#ff0099";
 
-    const config = useVideoConfig();
+    const { width: w, height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
-    const left = config.width / 2 - config.height * 0.36;
-    const right = config.width / 2 + config.height * 0.36;
+    const left = w / 2 - h * 0.36;
+    const right = w / 2 + h * 0.36;
 
     const translate =
         frame < duration / 5
@@ -42,7 +42,7 @@ export const SceneTransition: React.FC<z.infer<typeof schema>> = ({ duration, ba
             <AbsoluteFill
                 style={{
                     backgroundColor,
-                    clipPath: `polygon(0% 0%, ${left - 10}px 0%, ${config.width / 2 - 10}px 50%, ${left - 10}px 100%, 0% 100%)`,
+                    clipPath: `polygon(0% 0%, ${left - 10}px 0%, ${w / 2 - 10}px 50%, ${left - 10}px 100%, 0% 100%)`,
                     translate: `-${translate}%`,
                 }}
             />
@@ -52,7 +52,7 @@ export const SceneTransition: React.FC<z.infer<typeof schema>> = ({ duration, ba
             <AbsoluteFill
                 style={{
                     backgroundColor,
-                    clipPath: `polygon(${left + 10}px 100%, 50% ${config.height / 2 + 13.76}px, ${right - 10}px 100%)`,
+                    clipPath: `polygon(${left + 10}px 100%, 50% ${h / 2 + 13.76}px, ${right - 10}px 100%)`,
                     translate: `0 ${translate}%`,
                 }}
             />

@@ -12,20 +12,20 @@ export const Notifications: React.FC<z.infer<typeof schema>> = ({ notificationCo
     notificationColor ??= "#eeeeee";
     notificationColorFill ??= "#ee88ee";
 
-    const config = useVideoConfig();
+    const { height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            height={config.height * 0.09}
+            height={h * 0.09}
             viewBox="0 -960 960 960"
-            width={config.height * 0.09}
+            width={h * 0.09}
             style={{
                 position: "absolute",
                 fill: interpolateColors(frame, [176, 184], [notificationColor, notificationColorFill]),
-                top: config.height * 0.03,
-                right: config.height * 0.06,
+                top: h * 0.03,
+                right: h * 0.06,
                 scale: `${
                     frame < 176 || frame > 210
                         ? 1

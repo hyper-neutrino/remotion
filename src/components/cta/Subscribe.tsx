@@ -19,14 +19,14 @@ export const Subscribe: React.FC<z.infer<typeof schema>> = ({ subscribeBackgroun
     subscribeBackgroundColorFill ??= "#bb4444";
     subscribeColorFill ??= "#ffffff";
 
-    const config = useVideoConfig();
+    const { width: w } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
         <>
             <div
                 style={{
-                    fontSize: config.width * 0.02,
+                    fontSize: w * 0.02,
                     fontFamily,
                     scale: `${
                         frame < 110 || frame > 150
@@ -35,8 +35,8 @@ export const Subscribe: React.FC<z.infer<typeof schema>> = ({ subscribeBackgroun
                     }`,
                     backgroundColor: frame > 112 ? subscribeBackgroundColorFill : subscribeBackgroundColor,
                     color: frame > 112 ? subscribeColorFill : subscribeColor,
-                    padding: config.width * 0.01,
-                    borderRadius: config.width * 0.005,
+                    padding: w * 0.01,
+                    borderRadius: w * 0.005,
                 }}
             >
                 SUBSCRIBE

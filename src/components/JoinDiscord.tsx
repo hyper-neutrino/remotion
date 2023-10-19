@@ -13,31 +13,31 @@ export const schema = z.object({
 });
 
 export const JoinDiscord: React.FC<z.infer<typeof schema>> = ({ backgroundColor }) => {
-    const config = useVideoConfig();
+    const { width: w, height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
         <Toast backgroundColor={backgroundColor} delay={0} transitionDuration={30} duration={270}>
             <AbsoluteFill
                 style={{
-                    height: config.height * 0.15,
-                    width: config.height * 0.15,
+                    height: h * 0.15,
+                    width: h * 0.15,
                 }}
             >
                 {frame < 30 || (frame > 94 && frame < 236) ? (
-                    <Img src={staticFile("discord.png")} width={config.height * 0.15} height={config.height * 0.15} />
+                    <Img src={staticFile("discord.png")} width={h * 0.15} height={h * 0.15} />
                 ) : (
                     <Sequence from={frame < 135 ? 30 : 236}>
-                        <Gif src={staticFile("discord.gif")} width={config.height * 0.15} height={config.height * 0.15} fit="contain" />
+                        <Gif src={staticFile("discord.gif")} width={h * 0.15} height={h * 0.15} fit="contain" />
                     </Sequence>
                 )}
             </AbsoluteFill>
             <AbsoluteFill
                 style={{
-                    left: config.height * 0.1,
-                    width: config.width * 0.36 - config.height * 0.1,
+                    left: h * 0.1,
+                    width: w * 0.36 - h * 0.1,
                     color: "#eeeeee",
-                    fontSize: config.height * 0.03,
+                    fontSize: h * 0.03,
                     fontFamily,
                     display: "grid",
                     alignItems: "center",

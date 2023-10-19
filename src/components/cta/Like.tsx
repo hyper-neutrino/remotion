@@ -12,20 +12,20 @@ export const Like: React.FC<z.infer<typeof schema>> = ({ likeColor, likeColorFil
     likeColor ??= "#eeeeee";
     likeColorFill ??= "#8888ee";
 
-    const config = useVideoConfig();
+    const { height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            height={config.height * 0.09}
+            height={h * 0.09}
             viewBox="0 -960 960 960"
-            width={config.height * 0.09}
+            width={h * 0.09}
             style={{
                 position: "absolute",
                 fill: interpolateColors(frame, [56, 64], [likeColor, likeColorFill]),
-                top: config.height * 0.03,
-                left: config.height * 0.06,
+                top: h * 0.03,
+                left: h * 0.06,
                 scale: `${
                     frame < 56 || frame > 90 ? 1 : Math.min(1.12, Math.min(interpolate(frame, [56, 90], [1, 1.6]), interpolate(frame, [56, 90], [1.6, 1])))
                 }`,

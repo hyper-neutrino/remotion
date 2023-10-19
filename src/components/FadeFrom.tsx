@@ -12,7 +12,7 @@ export const FadeFrom: React.FC<z.infer<typeof schema>> = ({ duration, backgroun
     duration ??= 90;
     backgroundColor ??= "#2b2d31";
 
-    const config = useVideoConfig();
+    const { width: w } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
@@ -22,12 +22,12 @@ export const FadeFrom: React.FC<z.infer<typeof schema>> = ({ duration, backgroun
                     style={{
                         backgroundColor,
                         opacity: (1 + index) / 3,
-                        width: config.width * 10,
+                        width: w * 10,
                         clipPath: "polygon(2% 0%, 0% 100%, 100% 100%, 100% 0)",
                         translate: interpolate(
                             frame,
                             [(duration! / 9) * 4 - (duration! / 9) * 2 * index, (duration! / 9) * 6 - (duration! / 9) * index],
-                            [-config.width * 0.25, config.width * 1.25],
+                            [-w * 0.25, w * 1.25],
                             {
                                 extrapolateLeft: "clamp",
                                 extrapolateRight: "clamp",

@@ -37,10 +37,10 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
     titleColor ??= "#eeeeee";
     titleUnderlineColor ??= "#009688";
 
-    const config = useVideoConfig();
+    const { width: w, height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
-    const w = (config.height * 0.38 * 16) / 9;
+    const paneW = (h * 0.38 * 16) / 9;
 
     return (
         <>
@@ -49,14 +49,14 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
             </Sequence>
             <Sequence from={60}>
                 <AbsoluteFill style={{ backgroundColor }}>
-                    <Pane x={config.width - w - config.height * 0.08} y={config.height * 0.08} w={w} h={config.height * 0.38} backgroundColor={paneColor} />
-                    <Pane x={config.width - w - config.height * 0.08} y={config.height * 0.54} w={w} h={config.height * 0.38} backgroundColor={paneColor} />
+                    <Pane x={w - paneW - h * 0.08} y={h * 0.08} w={paneW} h={h * 0.38} backgroundColor={paneColor} />
+                    <Pane x={w - paneW - h * 0.08} y={h * 0.54} w={paneW} h={h * 0.38} backgroundColor={paneColor} />
                     <AbsoluteFill
                         style={{
                             textAlign: "center",
-                            width: config.width - w - config.height * 0.08,
-                            top: config.height * 0.25,
-                            fontSize: config.height * 0.1,
+                            width: w - paneW - h * 0.08,
+                            top: h * 0.25,
+                            fontSize: h * 0.1,
                             fontFamily,
                             color: titleColor,
                         }}
@@ -69,7 +69,7 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
                             }}
                         />
                     </AbsoluteFill>
-                    <AbsoluteFill style={{ top: config.height * 0.85, left: config.width * 0.05 }}>
+                    <AbsoluteFill style={{ top: h * 0.85, left: w * 0.05 }}>
                         <div
                             style={{
                                 display: "flex",
@@ -77,7 +77,7 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
                                 alignItems: "center",
                                 gap: "0.4em",
                                 fontFamily,
-                                fontSize: config.height * 0.05,
+                                fontSize: h * 0.05,
                                 color: titleColor,
                             }}
                         >

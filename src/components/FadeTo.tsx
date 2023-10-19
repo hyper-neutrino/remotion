@@ -12,7 +12,7 @@ export const FadeTo: React.FC<z.infer<typeof schema>> = ({ duration, backgroundC
     duration ??= 90;
     backgroundColor ??= "#2b2d31";
 
-    const config = useVideoConfig();
+    const { width: w } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
@@ -22,18 +22,13 @@ export const FadeTo: React.FC<z.infer<typeof schema>> = ({ duration, backgroundC
                     style={{
                         backgroundColor,
                         opacity: (1 + index) / 3,
-                        width: config.width * 2,
+                        width: w * 2,
                         clipPath: "polygon(0% 0%, 0% 100%, 90% 100%, 100% 0)",
-                        translate: interpolate(
-                            frame,
-                            [(duration! / 9) * 2 * index, (duration! / 9) * 4 + (duration! / 9) * index],
-                            [-config.width * 2, -config.width * 0.8],
-                            {
-                                extrapolateLeft: "clamp",
-                                extrapolateRight: "clamp",
-                                easing: Easing.bezier(0.2, 0.2, 0.8, 0.6),
-                            }
-                        ),
+                        translate: interpolate(frame, [(duration! / 9) * 2 * index, (duration! / 9) * 4 + (duration! / 9) * index], [-w * 2, -w * 0.8], {
+                            extrapolateLeft: "clamp",
+                            extrapolateRight: "clamp",
+                            easing: Easing.bezier(0.2, 0.2, 0.8, 0.6),
+                        }),
                     }}
                 />
             ))}

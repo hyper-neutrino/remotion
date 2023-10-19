@@ -16,7 +16,7 @@ export const Alert: React.FC<React.PropsWithChildren<z.infer<typeof schema>>> = 
     showProgress ??= true;
     progressColor ??= "#009688";
 
-    const config = useVideoConfig();
+    const { width: w, height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
@@ -27,19 +27,19 @@ export const Alert: React.FC<React.PropsWithChildren<z.infer<typeof schema>>> = 
                     scale: `${interpolate(frame, [0, 30, duration], [0.9, 1, 1])}`,
                     translate:
                         frame < 30
-                            ? spring({ frame, fps: 60, durationInFrames: 30, from: config.width * 0.25, to: 0, config: { damping: 12 } })
+                            ? spring({ frame, fps: 60, durationInFrames: 30, from: w * 0.25, to: 0, config: { damping: 12 } })
                             : frame > duration - 30
-                            ? interpolate(frame, [duration - 30, duration], [0, config.width], { easing: Easing.bezier(1, -0.02, 1, 0.1) })
+                            ? interpolate(frame, [duration - 30, duration], [0, w], { easing: Easing.bezier(1, -0.02, 1, 0.1) })
                             : 0,
                     transformOrigin: "50% 50%",
                     position: "relative",
                     display: "inline-block",
-                    width: config.width * 0.4,
-                    top: config.height * 0.05,
-                    left: config.width * 0.6 - config.height * 0.05,
+                    width: w * 0.4,
+                    top: h * 0.05,
+                    left: w * 0.6 - h * 0.05,
                     backgroundColor,
-                    padding: config.height * 0.025,
-                    borderRadius: config.width * 0.01,
+                    padding: h * 0.025,
+                    borderRadius: w * 0.01,
                 }}
             >
                 {children}

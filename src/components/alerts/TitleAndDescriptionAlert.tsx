@@ -17,12 +17,12 @@ export const TitleAndDescriptionAlert: React.FC<z.infer<typeof schema>> = ({ tit
     titleColor ??= "#eeeeee";
     descriptionColor ??= "#cccccc";
 
-    const config = useVideoConfig();
+    const { height: h } = useVideoConfig();
 
     return (
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-            <span style={{ color: titleColor, fontSize: config.height * 0.08, fontFamily }}>{title}</span>
-            <div style={{ color: descriptionColor, fontSize: config.height * 0.04, fontFamily }}>{description}</div>
+            <span style={{ color: titleColor, fontSize: h * 0.08, fontFamily }}>{title}</span>
+            <div style={{ color: descriptionColor, fontSize: h * 0.04, fontFamily }}>{description}</div>
         </div>
     );
 };

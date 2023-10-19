@@ -16,18 +16,18 @@ export const Toast: React.FC<React.PropsWithChildren<z.infer<typeof schema>>> = 
     transitionDuration ??= 30;
     duration ??= 270;
 
-    const config = useVideoConfig();
+    const { width: w, height: h } = useVideoConfig();
     const frame = useCurrentFrame();
 
     return (
         <AbsoluteFill
             style={{
                 backgroundColor,
-                top: config.height * 0.75,
-                left: config.width * 0.32,
-                height: config.height * 0.15,
-                width: config.width * 0.36,
-                borderRadius: config.width * 0.01,
+                top: h * 0.75,
+                left: w * 0.32,
+                height: h * 0.15,
+                width: w * 0.36,
+                borderRadius: w * 0.01,
                 opacity:
                     frame > delay + transitionDuration && frame < delay + duration - transitionDuration
                         ? 1
