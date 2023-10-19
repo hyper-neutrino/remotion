@@ -4,11 +4,14 @@ import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } fr
 import { z } from "zod";
 
 export const schema = z.object({
-    duration: z.number(),
-    backgroundColor: zColor(),
+    duration: z.optional(z.number()),
+    backgroundColor: z.optional(zColor()),
 });
 
 export const FadeTo: React.FC<z.infer<typeof schema>> = ({ duration, backgroundColor }) => {
+    duration ??= 90;
+    backgroundColor ??= "#2b2d31";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 
@@ -23,7 +26,7 @@ export const FadeTo: React.FC<z.infer<typeof schema>> = ({ duration, backgroundC
                         clipPath: "polygon(0% 0%, 0% 100%, 90% 100%, 100% 0)",
                         translate: interpolate(
                             frame,
-                            [(duration / 9) * 2 * index, (duration / 9) * 4 + (duration / 9) * index],
+                            [(duration! / 9) * 2 * index, (duration! / 9) * 4 + (duration! / 9) * index],
                             [-config.width * 2, -config.width * 0.8],
                             {
                                 extrapolateLeft: "clamp",

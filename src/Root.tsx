@@ -11,9 +11,7 @@ import { SectionHeader } from "./components/intermissions/SectionHeader";
 import { Intro, schema as introSchema } from "./components/Intro";
 import { JoinDiscord, schema as joinDiscordSchema } from "./components/JoinDiscord";
 import { Outro, schema as outroSchema } from "./components/Outro";
-import { SceneTransition, schema as sceneTransitionSchema } from "./SceneTransition";
-
-// Each <Composition> is an entry in the sidebar!
+import { SceneTransition, schema as sceneTransitionSchema } from "./components/SceneTransition";
 
 export const RemotionRoot: React.FC = () => {
     return (

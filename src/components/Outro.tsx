@@ -10,15 +10,15 @@ import { Pane } from "./outro/Pane";
 const { fontFamily } = loadFont();
 
 export const schema = z.object({
-    backgroundColor: zColor(),
-    paneColor: zColor(),
-    title: z.string(),
-    titleColor: zColor(),
-    titleUnderlineColor: zColor(),
-    subscribeBackgroundColor: zColor(),
-    subscribeColor: zColor(),
-    subscribeBackgroundColorFill: zColor(),
-    subscribeColorFill: zColor(),
+    backgroundColor: z.optional(zColor()),
+    paneColor: z.optional(zColor()),
+    title: z.optional(z.string()),
+    titleColor: z.optional(zColor()),
+    titleUnderlineColor: z.optional(zColor()),
+    subscribeBackgroundColor: z.optional(zColor()),
+    subscribeColor: z.optional(zColor()),
+    subscribeBackgroundColorFill: z.optional(zColor()),
+    subscribeColorFill: z.optional(zColor()),
 });
 
 export const Outro: React.FC<z.infer<typeof schema>> = ({
@@ -32,6 +32,11 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
     subscribeBackgroundColorFill,
     subscribeColorFill,
 }) => {
+    backgroundColor ??= "#2b2d31";
+    title ??= "Thanks for watching!";
+    titleColor ??= "#eeeeee";
+    titleUnderlineColor ??= "#009688";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

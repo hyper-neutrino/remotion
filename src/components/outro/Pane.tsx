@@ -8,10 +8,12 @@ export const schema = z.object({
     y: z.number(),
     w: z.number(),
     h: z.number(),
-    backgroundColor: zColor(),
+    backgroundColor: z.optional(zColor()),
 });
 
 export const Pane: React.FC<z.infer<typeof schema>> = ({ x, y, w, h, backgroundColor }) => {
+    backgroundColor ??= "#303136";
+
     const frame = useCurrentFrame();
 
     return (

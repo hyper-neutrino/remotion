@@ -7,13 +7,18 @@ import { z } from "zod";
 const { fontFamily } = loadFont();
 
 export const schema = z.object({
-    subscribeBackgroundColor: zColor(),
-    subscribeColor: zColor(),
-    subscribeBackgroundColorFill: zColor(),
-    subscribeColorFill: zColor(),
+    subscribeBackgroundColor: z.optional(zColor()),
+    subscribeColor: z.optional(zColor()),
+    subscribeBackgroundColorFill: z.optional(zColor()),
+    subscribeColorFill: z.optional(zColor()),
 });
 
 export const Subscribe: React.FC<z.infer<typeof schema>> = ({ subscribeBackgroundColor, subscribeColor, subscribeBackgroundColorFill, subscribeColorFill }) => {
+    subscribeBackgroundColor ??= "#eeeeee";
+    subscribeColor ??= "#303136";
+    subscribeBackgroundColorFill ??= "#bb4444";
+    subscribeColorFill ??= "#ffffff";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

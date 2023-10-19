@@ -4,13 +4,18 @@ import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } fr
 import { z } from "zod";
 
 export const schema = z.object({
-    backgroundColor: zColor(),
-    delay: z.number(),
-    transitionDuration: z.number(),
-    duration: z.number(),
+    backgroundColor: z.optional(zColor()),
+    delay: z.optional(z.number()),
+    transitionDuration: z.optional(z.number()),
+    duration: z.optional(z.number()),
 });
 
 export const Toast: React.FC<React.PropsWithChildren<z.infer<typeof schema>>> = ({ children, backgroundColor, delay, transitionDuration, duration }) => {
+    backgroundColor ??= "#303136";
+    delay ??= 0;
+    transitionDuration ??= 30;
+    duration ??= 270;
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

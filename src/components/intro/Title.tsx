@@ -9,11 +9,14 @@ const { fontFamily } = loadFont();
 export const schema = z.object({
     text: z.string(),
     subtitle: z.string(),
-    color: zColor(),
-    subtitleColor: zColor(),
+    color: z.optional(zColor()),
+    subtitleColor: z.optional(zColor()),
 });
 
 export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color, subtitleColor }) => {
+    color ??= "#eeeeee";
+    subtitleColor ??= "#888888";
+
     const frame = useCurrentFrame();
     const config = useVideoConfig();
 

@@ -2,14 +2,14 @@ import { Gif } from "@remotion/gif";
 import { loadFont } from "@remotion/google-fonts/ShareTech";
 import { zColor } from "@remotion/zod-types";
 import React from "react";
-import { AbsoluteFill, Easing, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
 import { Toast } from "./utils/Toast";
 
 const { fontFamily } = loadFont();
 
 export const schema = z.object({
-    backgroundColor: zColor(),
+    backgroundColor: z.optional(zColor()),
 });
 
 export const JoinDiscord: React.FC<z.infer<typeof schema>> = ({ backgroundColor }) => {

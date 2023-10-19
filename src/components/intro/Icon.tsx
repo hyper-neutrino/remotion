@@ -4,11 +4,14 @@ import { Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from "re
 import { z } from "zod";
 
 export const schema = z.object({
-    primaryColor: zColor(),
-    secondaryColor: zColor(),
+    primaryColor: z.optional(zColor()),
+    secondaryColor: z.optional(zColor()),
 });
 
 export const Icon: React.FC<z.infer<typeof schema>> = ({ primaryColor, secondaryColor }) => {
+    primaryColor ??= "#ff0099";
+    secondaryColor ??= "#009688";
+
     const frame = useCurrentFrame();
     const config = useVideoConfig();
 

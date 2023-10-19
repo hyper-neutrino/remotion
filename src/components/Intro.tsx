@@ -7,16 +7,19 @@ import { Icon } from "./intro/Icon";
 import { Title } from "./intro/Title";
 
 export const schema = z.object({
-    text: z.string(),
+    text: z.optional(z.string()),
     subtitle: z.string(),
-    backgroundColor: zColor(),
-    color: zColor(),
-    subtitleColor: zColor(),
-    primaryColor: zColor(),
-    secondaryColor: zColor(),
+    backgroundColor: z.optional(zColor()),
+    color: z.optional(zColor()),
+    subtitleColor: z.optional(zColor()),
+    primaryColor: z.optional(zColor()),
+    secondaryColor: z.optional(zColor()),
 });
 
 export const Intro: React.FC<z.infer<typeof schema>> = ({ text, subtitle, backgroundColor, color, subtitleColor, primaryColor, secondaryColor }) => {
+    text ??= "HyperNeutrino";
+    backgroundColor ??= "#2b2d31";
+
     const frame = useCurrentFrame();
 
     return (

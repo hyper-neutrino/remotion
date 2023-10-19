@@ -4,11 +4,14 @@ import { interpolate, interpolateColors, useCurrentFrame, useVideoConfig } from 
 import { z } from "zod";
 
 export const schema = z.object({
-    notificationColor: zColor(),
-    notificationColorFill: zColor(),
+    notificationColor: z.optional(zColor()),
+    notificationColorFill: z.optional(zColor()),
 });
 
 export const Notifications: React.FC<z.infer<typeof schema>> = ({ notificationColor, notificationColorFill }) => {
+    notificationColor ??= "#eeeeee";
+    notificationColorFill ??= "#ee88ee";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

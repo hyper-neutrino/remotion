@@ -4,12 +4,16 @@ import { AbsoluteFill, Easing, interpolate, interpolateColors, useCurrentFrame, 
 import { z } from "zod";
 
 export const schema = z.object({
-    duration: z.number(),
-    backgroundColor: zColor(),
-    color: zColor(),
+    duration: z.optional(z.number()),
+    backgroundColor: z.optional(zColor()),
+    color: z.optional(zColor()),
 });
 
 export const SceneTransition: React.FC<z.infer<typeof schema>> = ({ duration, backgroundColor, color }) => {
+    duration ??= 120;
+    backgroundColor ??= "#2b2d31";
+    color ??= "#ff0099";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

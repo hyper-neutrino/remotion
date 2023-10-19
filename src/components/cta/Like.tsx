@@ -4,11 +4,14 @@ import { interpolate, interpolateColors, useCurrentFrame, useVideoConfig } from 
 import { z } from "zod";
 
 export const schema = z.object({
-    likeColor: zColor(),
-    likeColorFill: zColor(),
+    likeColor: z.optional(zColor()),
+    likeColorFill: z.optional(zColor()),
 });
 
 export const Like: React.FC<z.infer<typeof schema>> = ({ likeColor, likeColorFill }) => {
+    likeColor ??= "#eeeeee";
+    likeColorFill ??= "#8888ee";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

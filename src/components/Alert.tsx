@@ -4,13 +4,18 @@ import { AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoCon
 import { z } from "zod";
 
 export const schema = z.object({
-    backgroundColor: zColor(),
-    duration: z.number(),
-    showProgress: z.boolean(),
+    backgroundColor: z.optional(zColor()),
+    duration: z.optional(z.number()),
+    showProgress: z.optional(z.boolean()),
     progressColor: z.optional(zColor()),
 });
 
 export const Alert: React.FC<React.PropsWithChildren<z.infer<typeof schema>>> = ({ backgroundColor, duration, showProgress, progressColor, children }) => {
+    backgroundColor ??= "#303136";
+    duration ??= 240;
+    showProgress ??= true;
+    progressColor ??= "#009688";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

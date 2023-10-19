@@ -7,14 +7,18 @@ import { z } from "zod";
 const { fontFamily } = loadFont();
 
 export const schema = z.object({
-    duration: z.number(),
+    duration: z.optional(z.number()),
     title: z.string(),
     subtitle: z.optional(z.string()),
-    titleColor: zColor(),
+    titleColor: z.optional(zColor()),
     subtitleColor: z.optional(zColor()),
 });
 
 export const SectionHeader: React.FC<z.infer<typeof schema>> = ({ duration, title, subtitle, titleColor, subtitleColor }) => {
+    duration ??= 240;
+    titleColor ??= "#eeeeee";
+    subtitleColor ??= "#aaaaaa";
+
     const config = useVideoConfig();
     const frame = useCurrentFrame();
 

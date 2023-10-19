@@ -6,11 +6,14 @@ import { FadeFrom } from "./FadeFrom";
 import { FadeTo } from "./FadeTo";
 
 export const schema = z.object({
-    backgroundColor: zColor(),
-    intermissionDuration: z.number(),
+    backgroundColor: z.optional(zColor()),
+    intermissionDuration: z.optional(z.number()),
 });
 
 export const Intermission: React.FC<React.PropsWithChildren<z.infer<typeof schema>>> = ({ backgroundColor, intermissionDuration, children }) => {
+    backgroundColor ??= "#2b2d31";
+    intermissionDuration ??= 240;
+
     return (
         <>
             <Sequence durationInFrames={60}>

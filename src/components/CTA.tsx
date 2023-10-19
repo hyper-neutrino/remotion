@@ -7,15 +7,15 @@ import { Subscribe } from "./cta/Subscribe";
 import { Toast } from "./utils/Toast";
 
 export const schema = z.object({
-    backgroundColor: zColor(),
-    likeColor: zColor(),
-    likeColorFill: zColor(),
-    subscribeBackgroundColor: zColor(),
-    subscribeColor: zColor(),
-    subscribeBackgroundColorFill: zColor(),
-    subscribeColorFill: zColor(),
-    notificationColor: zColor(),
-    notificationColorFill: zColor(),
+    backgroundColor: z.optional(zColor()),
+    likeColor: z.optional(zColor()),
+    likeColorFill: z.optional(zColor()),
+    subscribeBackgroundColor: z.optional(zColor()),
+    subscribeColor: z.optional(zColor()),
+    subscribeBackgroundColorFill: z.optional(zColor()),
+    subscribeColorFill: z.optional(zColor()),
+    notificationColor: z.optional(zColor()),
+    notificationColorFill: z.optional(zColor()),
 });
 
 export const CTA: React.FC<z.infer<typeof schema>> = ({
