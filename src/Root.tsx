@@ -1,16 +1,16 @@
 import { zColor } from "@remotion/zod-types";
 import { Composition, Sequence } from "remotion";
 import { z } from "zod";
-import { Alert, schema as alertSchema } from "./Alert";
-import { TitleAndDescriptionAlert } from "./alerts/TitleAndDescriptionAlert";
-import { CTA, schema as ctaSchema } from "./CTA";
-import { FadeFrom, schema as fadeFromSchema } from "./FadeFrom";
-import { FadeTo, schema as fadeToSchema } from "./FadeTo";
-import { Intermission, schema as intermissionSchema } from "./Intermission";
-import { SectionHeader } from "./intermissions/SectionHeader";
-import { Intro, schema as introSchema } from "./Intro";
-import { JoinDiscord, schema as joinDiscordSchema } from "./JoinDiscord";
-import { Outro, schema as outroSchema } from "./Outro";
+import { Alert, schema as alertSchema } from "./components/Alert";
+import { TitleAndDescriptionAlert } from "./components/alerts/TitleAndDescriptionAlert";
+import { CTA, schema as ctaSchema } from "./components/CTA";
+import { FadeFrom, schema as fadeFromSchema } from "./components/FadeFrom";
+import { FadeTo, schema as fadeToSchema } from "./components/FadeTo";
+import { Intermission, schema as intermissionSchema } from "./components/Intermission";
+import { SectionHeader } from "./components/intermissions/SectionHeader";
+import { Intro, schema as introSchema } from "./components/Intro";
+import { JoinDiscord, schema as joinDiscordSchema } from "./components/JoinDiscord";
+import { Outro, schema as outroSchema } from "./components/Outro";
 import { SceneTransition, schema as sceneTransitionSchema } from "./SceneTransition";
 
 // Each <Composition> is an entry in the sidebar!
