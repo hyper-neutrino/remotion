@@ -12,6 +12,7 @@ import { Intro, schema as introSchema } from "./components/Intro";
 import { JoinDiscord, schema as joinDiscordSchema } from "./components/JoinDiscord";
 import { Outro, schema as outroSchema } from "./components/Outro";
 import { SceneTransition, schema as sceneTransitionSchema } from "./components/SceneTransition";
+import { DeepDiveBezierCurves, duration as deepDiveBezierCurvesDuration } from "./videos/DeepDiveBezierCurves";
 
 export const RemotionRoot: React.FC = () => {
     return (
@@ -178,6 +179,14 @@ export const RemotionRoot: React.FC = () => {
                     backgroundColor: "#2b2d31",
                     color: "#ff0099",
                 }}
+            />
+            <Composition
+                id="Video-DeepDiveBezierCurves"
+                component={DeepDiveBezierCurves}
+                durationInFrames={deepDiveBezierCurvesDuration}
+                fps={60}
+                width={2560}
+                height={1440}
             />
         </>
     );
