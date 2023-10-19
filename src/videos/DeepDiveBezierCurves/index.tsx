@@ -9,7 +9,7 @@ export const DeepDiveBezierCurves: React.FC = () => {
     const { width: w, height: h } = useVideoConfig();
 
     return (
-        <AbsoluteFill style={{ backgroundColor: "#111214" }}>
+        <AbsoluteFill style={{ backgroundColor: "#121212" }}>
             <Series>
                 <Series.Sequence durationInFrames={330}>
                     <Intro subtitle="Deep Dive: Bezier Curves" />
