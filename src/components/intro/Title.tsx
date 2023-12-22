@@ -46,7 +46,7 @@ export const Title: React.FC<z.infer<typeof schema>> = ({ text, subtitle, color,
             </AbsoluteFill>
             <AbsoluteFill
                 style={{
-                    fontSize: h * 0.08,
+                    fontSize: h * 0.06,
                     color: subtitleColor,
                     fontFamily,
                     top: h * 0.53,

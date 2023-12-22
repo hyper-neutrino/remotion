@@ -3,7 +3,7 @@ import { Composition, Sequence } from "remotion";
 import { z } from "zod";
 import { Alert, schema as alertSchema } from "./components/Alert";
 import { TitleAndDescriptionAlert } from "./components/alerts/TitleAndDescriptionAlert";
-import { CTA, schema as ctaSchema } from "./components/CTA";
+import { Cta, schema as ctaSchema } from "./components/Cta";
 import { FadeFrom, schema as fadeFromSchema } from "./components/FadeFrom";
 import { FadeTo, schema as fadeToSchema } from "./components/FadeTo";
 import { Intermission, schema as intermissionSchema } from "./components/Intermission";
@@ -12,7 +12,9 @@ import { Intro, schema as introSchema } from "./components/Intro";
 import { JoinDiscord, schema as joinDiscordSchema } from "./components/JoinDiscord";
 import { Outro, schema as outroSchema } from "./components/Outro";
 import { SceneTransition, schema as sceneTransitionSchema } from "./components/SceneTransition";
+import { AOC, duration as aocDuration } from "./videos/AOC";
 import { DeepDiveBezierCurves, duration as deepDiveBezierCurvesDuration } from "./videos/DeepDiveBezierCurves";
+import { duration as js1Duration, JS1 } from "./videos/JSTutorial1";
 
 export const RemotionRoot: React.FC = () => {
     return (
@@ -27,7 +29,7 @@ export const RemotionRoot: React.FC = () => {
                 schema={introSchema}
                 defaultProps={{
                     text: "HyperNeutrino",
-                    subtitle: "Hello, World!",
+                    subtitle: "Advent of Code | General Tips",
                     backgroundColor: "#2b2d31",
                     color: "#eeeeee",
                     subtitleColor: "#888888",
@@ -36,8 +38,8 @@ export const RemotionRoot: React.FC = () => {
                 }}
             />
             <Composition
-                id="CTA"
-                component={CTA}
+                id="Cta"
+                component={Cta}
                 durationInFrames={300}
                 fps={60}
                 width={2560}
@@ -65,7 +67,6 @@ export const RemotionRoot: React.FC = () => {
                 schema={outroSchema}
                 defaultProps={{
                     backgroundColor: "#2b2d31",
-                    paneColor: "#303136",
                     title: "Thanks for watching!",
                     titleColor: "#eeeeee",
                     titleUnderlineColor: "#009688",
@@ -188,6 +189,8 @@ export const RemotionRoot: React.FC = () => {
                 width={2560}
                 height={1440}
             />
+            <Composition id="Video-JS1" component={JS1} durationInFrames={js1Duration} fps={60} width={2560} height={1440} />
+            <Composition id="AOC" component={AOC} durationInFrames={aocDuration} fps={60} width={2560} height={1440} />
         </>
     );
 };

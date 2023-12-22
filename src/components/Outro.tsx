@@ -5,13 +5,11 @@ import { AbsoluteFill, interpolate, Sequence, spring, useCurrentFrame, useVideoC
 import { z } from "zod";
 import { Subscribe } from "./cta/Subscribe";
 import { FadeTo } from "./FadeTo";
-import { Pane } from "./outro/Pane";
 
 const { fontFamily } = loadFont();
 
 export const schema = z.object({
     backgroundColor: z.optional(zColor()),
-    paneColor: z.optional(zColor()),
     title: z.optional(z.string()),
     titleColor: z.optional(zColor()),
     titleUnderlineColor: z.optional(zColor()),
@@ -23,7 +21,6 @@ export const schema = z.object({
 
 export const Outro: React.FC<z.infer<typeof schema>> = ({
     backgroundColor,
-    paneColor,
     title,
     titleColor,
     titleUnderlineColor,
@@ -49,8 +46,6 @@ export const Outro: React.FC<z.infer<typeof schema>> = ({
             </Sequence>
             <Sequence from={60}>
                 <AbsoluteFill style={{ backgroundColor }}>
-                    <Pane x={w - paneW - h * 0.08} y={h * 0.08} w={paneW} h={h * 0.38} backgroundColor={paneColor} />
-                    <Pane x={w - paneW - h * 0.08} y={h * 0.54} w={paneW} h={h * 0.38} backgroundColor={paneColor} />
                     <AbsoluteFill
                         style={{
                             textAlign: "center",

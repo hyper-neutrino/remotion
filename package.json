@@ -1,37 +1,37 @@
 {
-  "name": "remotion",
-  "version": "1.0.0",
-  "description": "My Remotion video",
-  "scripts": {
-    "start": "remotion studio",
-    "build": "remotion render HelloWorld out/video.mp4",
-    "upgrade": "remotion upgrade",
-    "test": "eslint src --ext ts,tsx,js,jsx && tsc"
-  },
-  "repository": {},
-  "license": "UNLICENSED",
-  "dependencies": {
-    "@remotion/bundler": "^4.0.46",
-    "@remotion/cli": "^4.0.46",
-    "@remotion/eslint-plugin": "^4.0.46",
-    "@remotion/gif": "^4.0.46",
-    "@remotion/google-fonts": "^4.0.45",
-    "@remotion/media-utils": "^4.0.46",
-    "@remotion/player": "^4.0.46",
-    "@remotion/renderer": "^4.0.46",
-    "@remotion/zod-types": "^4.0.46",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "remotion": "latest",
-    "zod": "^3.21.4"
-  },
-  "devDependencies": {
-    "@remotion/eslint-config": "^4.0.46",
-    "@types/react": "^18.0.26",
-    "@types/web": "^0.0.86",
-    "eslint": "^8.43.0",
-    "prettier": "^2.8.8",
-    "typescript": "^4.9.4"
-  },
-  "packageManager": "bun@1.0.0"
+    "name": "remotion",
+    "version": "1.0.0",
+    "description": "My Remotion video",
+    "scripts": {
+        "start": "remotion studio",
+        "build": "remotion render HelloWorld out/video.mp4",
+        "upgrade": "remotion upgrade",
+        "test": "eslint src --ext ts,tsx,js,jsx && tsc"
+    },
+    "repository": {},
+    "license": "UNLICENSED",
+    "dependencies": {
+        "@remotion/bundler": "latest",
+        "@remotion/cli": "latest",
+        "@remotion/eslint-plugin": "latest",
+        "@remotion/gif": "latest",
+        "@remotion/google-fonts": "latest",
+        "@remotion/media-utils": "latest",
+        "@remotion/player": "latest",
+        "@remotion/renderer": "latest",
+        "@remotion/zod-types": "latest",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "remotion": "latest",
+        "zod": "^3.21.4"
+    },
+    "devDependencies": {
+        "@remotion/eslint-config": "latest",
+        "@types/react": "^18.0.26",
+        "@types/web": "^0.0.86",
+        "eslint": "^8.43.0",
+        "prettier": "^2.8.8",
+        "typescript": "^4.9.4"
+    },
+    "packageManager": "bun@1.0.0"
 }
